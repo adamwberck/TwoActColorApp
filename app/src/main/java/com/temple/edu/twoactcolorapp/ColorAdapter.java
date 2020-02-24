@@ -14,7 +14,7 @@ import java.util.List;
 public class ColorAdapter extends BaseAdapter {
     ColorAdapter(Context context) {
         this.context = context;
-        String[] strings = {"red","blue","green","black","olive","navy", "cyan","magenta","yellow",
+        String[] strings = {"","red","blue","green","black","olive","navy", "cyan","magenta","yellow",
                 "grey"};
         colors = Arrays.asList(strings);
     }
@@ -45,17 +45,20 @@ public class ColorAdapter extends BaseAdapter {
                     inflate(R.layout.spin_text, parent, false);
         }
         String item = (String) getItem(position);
-        ((TextView)convertView.findViewById(R.id.text_color)).setText(item);
-        convertView.findViewById(R.id.layout_spin).setBackgroundColor(Color.parseColor(item));
+        ((TextView) convertView.findViewById(R.id.text_color)).setText(item);
+        if(!item.isEmpty()) {
+            convertView.findViewById(R.id.layout_spin).setBackgroundColor(Color.parseColor(item));
 
-        if(item.equals("black") || item.equals("navy") || item.equals("blue")){
-            ((TextView)convertView.findViewById(R.id.text_color)).setTextColor(Color.parseColor(
-                    "white"));
+            if (item.equals("black") || item.equals("navy") || item.equals("blue")) {
+                ((TextView) convertView.findViewById(R.id.text_color)).setTextColor(Color.parseColor(
+                        "white"));
+            } else {
+                ((TextView) convertView.findViewById(R.id.text_color)).setTextColor(Color.parseColor(
+                        "black"));
+            }
         }else{
-            ((TextView)convertView.findViewById(R.id.text_color)).setTextColor(Color.parseColor(
-                    "black"));
+            convertView.findViewById(R.id.layout_spin).setBackgroundColor(Color.parseColor("white"));
         }
-
         return convertView;
     }
 }
