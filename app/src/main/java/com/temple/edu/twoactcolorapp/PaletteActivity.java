@@ -13,6 +13,7 @@ import androidx.appcompat.app.AppCompatActivity;
 public class PaletteActivity extends AppCompatActivity {
 
     public static final String EXTRA_COLOR = "com.temple.edu.twoactcolorapp.COLOR" ;
+    public static final String EXTRA_TEXT = "com.temple.edu.twoactcolorapp.TEXT";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,7 +22,8 @@ public class PaletteActivity extends AppCompatActivity {
         setContentView(R.layout.activity_palette);
 
         Spinner colorSpinner = findViewById(R.id.spinner_color);
-        colorSpinner.setAdapter(new ColorAdapter(this));
+        final ColorAdapter colorAdapter = new ColorAdapter(this);
+        colorSpinner.setAdapter(colorAdapter);
 
         colorSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -30,10 +32,11 @@ public class PaletteActivity extends AppCompatActivity {
                 textView.setTextColor(Color.parseColor("black"));
                 view.findViewById(R.id.layout_spin).setBackgroundColor(Color.parseColor(
                         "White"));
-                String name = textView.getText().toString();
+                String name = colorAdapter.getColor(position);
                 if(!name.isEmpty()) {
                     Intent intent = new Intent(PaletteActivity.this, CanvasActivity.class);
                     intent.putExtra(EXTRA_COLOR, name);
+                    intent.putExtra(EXTRA_TEXT, textView.getText());
                     startActivity(intent);
                 }
             }

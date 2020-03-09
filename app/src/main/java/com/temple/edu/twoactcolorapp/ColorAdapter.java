@@ -63,6 +63,10 @@ public class ColorAdapter extends BaseAdapter {
         return convertView;
     }
 
+    public String getColor(int position) {
+        return colors.get(position);
+    }
+
     private class ColorItem{
         ColorItem(String color, String colorText) {
             this.color = color;
