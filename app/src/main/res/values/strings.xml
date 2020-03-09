@@ -1,3 +1,31 @@
 <resources>
     <string name="app_name">TwoActColorApp</string>
+    <string name="canvas_activity">Canvas Activity</string>
+    <string name="palette_activity">Palette Activity</string>
+    <array name="colors">
+        <item>""</item>
+        <item>"red"</item>
+        <item>"blue"</item>
+        <item>"green"</item>
+        <item>"black"</item>
+        <item>"olive"</item>
+        <item>"navy"</item>
+        <item>"cyan"</item>
+        <item>"magenta"</item>
+        <item>"yellow"</item>
+        <item>"grey"</item>
+    </array>
+    <array name="colorsText">
+        <item>""</item>
+        <item>"red"</item>
+        <item>"blue"</item>
+        <item>"green"</item>
+        <item>"black"</item>
+        <item>"olive"</item>
+        <item>"navy"</item>
+        <item>"cyan"</item>
+        <item>"magenta"</item>
+        <item>"yellow"</item>
+        <item>"grey"</item>
+    </array>
 </resources>

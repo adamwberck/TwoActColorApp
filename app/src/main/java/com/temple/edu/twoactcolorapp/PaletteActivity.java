@@ -17,7 +17,7 @@ public class PaletteActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getSupportActionBar().setTitle("Palette Activity");
+        getSupportActionBar().setTitle(R.string.palette_activity);
         setContentView(R.layout.activity_palette);
 
         Spinner colorSpinner = findViewById(R.id.spinner_color);

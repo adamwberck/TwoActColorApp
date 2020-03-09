@@ -12,7 +12,7 @@ public class CanvasActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getSupportActionBar().setTitle("Canvas Activity");
+        getSupportActionBar().setTitle(R.string.canvas_activity);
         setContentView(R.layout.activity_canvas);
         String text = getIntent().getStringExtra(PaletteActivity.EXTRA_COLOR);
         findViewById(R.id.layout_canvas).setBackgroundColor(Color.parseColor(text));

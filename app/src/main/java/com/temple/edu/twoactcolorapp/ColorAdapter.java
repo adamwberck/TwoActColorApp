@@ -14,13 +14,13 @@ import java.util.List;
 public class ColorAdapter extends BaseAdapter {
     ColorAdapter(Context context) {
         this.context = context;
-        String[] strings = {"","red","blue","green","black","olive","navy", "cyan","magenta","yellow",
-                "grey"};
-        colors = Arrays.asList(strings);
+        colors = Arrays.asList(context.getResources().getStringArray(R.array.colors));
+        colorsText = Arrays.asList(context.getResources().getStringArray(R.array.colorsText));
     }
 
     private Context context;
     private List<String> colors;
+    private List<String> colorsText;
 
 
     @Override
@@ -30,7 +30,7 @@ public class ColorAdapter extends BaseAdapter {
 
     @Override
     public Object getItem(int position) {
-        return colors.get(position);
+        return new ColorItem(colors.get(position),colorsText.get(position));
     }
 
     @Override
@@ -44,12 +44,13 @@ public class ColorAdapter extends BaseAdapter {
             convertView = LayoutInflater.from(context).
                     inflate(R.layout.spin_text, parent, false);
         }
-        String item = (String) getItem(position);
-        ((TextView) convertView.findViewById(R.id.text_color)).setText(item);
-        if(!item.isEmpty()) {
-            convertView.findViewById(R.id.layout_spin).setBackgroundColor(Color.parseColor(item));
+        String color = ((ColorItem)getItem(position)).color;
+        String colorText = ((ColorItem)getItem(position)).colorText;
+        ((TextView) convertView.findViewById(R.id.text_color)).setText(colorText);
+        if(!color.isEmpty()) {
+            convertView.findViewById(R.id.layout_spin).setBackgroundColor(Color.parseColor(color));
 
-            if (item.equals("black") || item.equals("navy") || item.equals("blue")) {
+            if (color.equals("black") || color.equals("navy") || color.equals("blue")) {
                 ((TextView) convertView.findViewById(R.id.text_color)).setTextColor(Color.parseColor(
                         "white"));
             } else {
@@ -60,5 +61,15 @@ public class ColorAdapter extends BaseAdapter {
             convertView.findViewById(R.id.layout_spin).setBackgroundColor(Color.parseColor("white"));
         }
         return convertView;
+    }
+
+    private class ColorItem{
+        ColorItem(String color, String colorText) {
+            this.color = color;
+            this.colorText = colorText;
+        }
+
+        String color;
+        String colorText;
     }
 }
