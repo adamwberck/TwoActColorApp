@@ -1,5 +1,7 @@
 package com.temple.edu.twoactcolorapp;
 
+import android.app.Activity;
+import android.content.Context;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -18,12 +20,25 @@ public class PaletteFragment extends Fragment {
     public static final String EXTRA_COLOR = "com.temple.edu.twoactcolorapp.COLOR" ;
     public static final String EXTRA_TEXT = "com.temple.edu.twoactcolorapp.TEXT";
     private List<String> colors;
+    private TakesColor colorTaker;
 
 
     public static PaletteFragment newInstance(List<String> colors) {
         PaletteFragment paletteFragment = new PaletteFragment();
         paletteFragment.colors = colors;
         return paletteFragment;
+    }
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        colorTaker = (TakesColor) context;
+    }
+
+    @Override
+    public void onDetach(){
+        super.onDetach();
+        colorTaker = null;
     }
 
     @Override
@@ -57,5 +72,9 @@ public class PaletteFragment extends Fragment {
             }
         });
         return view;
+    }
+
+    public interface TakesColor {
+        void takeColor(String color,String text);
     }
 }
