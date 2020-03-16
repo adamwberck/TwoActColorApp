@@ -1,18 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/layout_canvas"
+    android:id="@+id/layout_color"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".CanvasActivity"
+    tools:context=".PaletteFragment"
     android:orientation="vertical">
-    <TextView
+    <Spinner
         android:layout_marginTop="150dp"
-        android:textSize="50sp"
         android:layout_gravity="center_horizontal"
-        android:id="@+id/text_color"
+        android:id="@+id/spinner_color"
         android:layout_height="wrap_content"
-        android:layout_width="300dp"
-        android:textColor="@color/colorBlack"
-        android:background="@color/white"/>
+        android:layout_width="300dp"/>
 </LinearLayout>

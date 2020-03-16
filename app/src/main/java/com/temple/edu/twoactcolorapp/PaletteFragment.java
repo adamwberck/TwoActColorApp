@@ -1,28 +1,27 @@
 package com.temple.edu.twoactcolorapp;
 
-import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.Spinner;
 import android.widget.TextView;
 
-import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 
-public class PaletteActivity extends AppCompatActivity {
+public class PaletteFragment extends Fragment {
 
     public static final String EXTRA_COLOR = "com.temple.edu.twoactcolorapp.COLOR" ;
     public static final String EXTRA_TEXT = "com.temple.edu.twoactcolorapp.TEXT";
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        getSupportActionBar().setTitle(R.string.palette_activity);
-        setContentView(R.layout.activity_palette);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, final Bundle sis) {
+        final View view = inflater.inflate(R.layout.layout_canvas,container,false);
 
-        Spinner colorSpinner = findViewById(R.id.spinner_color);
-        final ColorAdapter colorAdapter = new ColorAdapter(this);
+        Spinner colorSpinner = view.findViewById(R.id.spinner_color);
+        final ColorAdapter colorAdapter = new ColorAdapter(getContext());
         colorSpinner.setAdapter(colorAdapter);
 
         colorSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -33,12 +32,13 @@ public class PaletteActivity extends AppCompatActivity {
                 view.findViewById(R.id.layout_spin).setBackgroundColor(Color.parseColor(
                         "White"));
                 String name = colorAdapter.getColor(position);
+                /*
                 if(!name.isEmpty()) {
-                    Intent intent = new Intent(PaletteActivity.this, CanvasActivity.class);
+                    Intent intent = new Intent(PaletteFragment.this, CanvasFragment.class);
                     intent.putExtra(EXTRA_COLOR, name);
                     intent.putExtra(EXTRA_TEXT, textView.getText());
                     startActivity(intent);
-                }
+                }*/
             }
 
             @Override
@@ -46,5 +46,6 @@ public class PaletteActivity extends AppCompatActivity {
 
             }
         });
+        return view;
     }
 }
