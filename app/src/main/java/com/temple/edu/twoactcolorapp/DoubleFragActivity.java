@@ -9,7 +9,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
-public class DoubleFragActivity extends AppCompatActivity {
+public class DoubleFragActivity extends AppCompatActivity implements PaletteFragment.TakesColor{
     private CanvasFragment canvasFragment;
 
     @Override
@@ -33,4 +33,8 @@ public class DoubleFragActivity extends AppCompatActivity {
         }
     }
 
+    @Override
+    public void takeColor(String color, String text) {
+        canvasFragment.setColorVars(color,text);
+    }
 }
