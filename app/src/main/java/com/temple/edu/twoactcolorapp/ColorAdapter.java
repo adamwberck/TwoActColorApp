@@ -14,8 +14,6 @@ import java.util.List;
 public class ColorAdapter extends BaseAdapter {
     ColorAdapter(Context context) {
         this.context = context;
-        colors = Arrays.asList(context.getResources().getStringArray(R.array.colors));
-        colorsText = Arrays.asList(context.getResources().getStringArray(R.array.colorsText));
     }
 
     private Context context;

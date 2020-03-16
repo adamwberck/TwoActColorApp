@@ -9,12 +9,22 @@ import android.widget.AdapterView;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import java.util.List;
+
 import androidx.fragment.app.Fragment;
 
 public class PaletteFragment extends Fragment {
 
     public static final String EXTRA_COLOR = "com.temple.edu.twoactcolorapp.COLOR" ;
     public static final String EXTRA_TEXT = "com.temple.edu.twoactcolorapp.TEXT";
+    private List<String> colors;
+
+
+    public static PaletteFragment newInstance(List<String> colors) {
+        PaletteFragment paletteFragment = new PaletteFragment();
+        paletteFragment.colors = colors;
+        return paletteFragment;
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, final Bundle sis) {
